@@ -599,8 +599,8 @@ INLINE MyStr_t OC_PathJoin(OC_Arena_t* arena, oc_str8_list elements)            
 INLINE MyStr_t OC_PathAppend(OC_Arena_t* arena, MyStr_t parent, MyStr_t relPath)                                            { return ToStr(oc_path_append(arena, parent.oc, relPath.oc)); }
 INLINE bool OC_PathIsAbsolute(MyStr_t path)                                                                                 { return oc_path_is_absolute(path.oc); }
 
-#define OC_Str8Pushf(arena, format, ...)               oc_str8_pushf(arena, format, ##__VA_ARGS__)
-#define OC_Str8ListPushf(arena, list, format, ...)     oc_str8_list_pushf(arena, list, format, ##__VA_ARGS__)
+#define OC_Str8Pushf(arena, format, ...)               ToStr(oc_str8_pushf(arena, format, ##__VA_ARGS__))
+#define OC_Str8ListPushf(arena, list, format, ...)     ToStr(oc_str8_list_pushf(arena, list, format, ##__VA_ARGS__))
 #define OC_ArenaPushType(arena, type)                  ((type*)OC_ArenaPushAligned(arena, sizeof(type), _Alignof(type)))
 #define OC_ArenaPushArray(arena, type, count)          ((type*)OC_ArenaPushAligned(arena, sizeof(type) * (count), _Alignof(type)))
 #define OC_ScratchEnd(scope)                           OC_ArenaScopeEnd(scope)
