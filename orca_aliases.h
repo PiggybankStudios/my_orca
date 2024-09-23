@@ -468,9 +468,13 @@ INLINE OC_Image_t OC_GetImage()                                                 
 INLINE rec OC_GetImageSourceRegion()                                                                                                                { return ToRec(oc_get_image_source_region()); }
 INLINE v2 OC_GetPosition()                                                                                                                          { return ToVec2(oc_get_position()); }
 INLINE void OC_MoveTo(r32 x, r32 y)                                                                                                                 { oc_move_to(x, y); }
+INLINE void OC_MoveTo(v2 pos)                                                                                                                       { oc_move_to(pos.x, pos.y); }
 INLINE void OC_LineTo(r32 x, r32 y)                                                                                                                 { oc_line_to(x, y); }
+INLINE void OC_LineTo(v2 pos)                                                                                                                       { oc_line_to(pos.x, pos.y); }
 INLINE void OC_QuadraticTo(r32 x1, r32 y1, r32 x2, r32 y2)                                                                                          { oc_quadratic_to(x1, y1, x2, y2); }
+INLINE void OC_QuadraticTo(v2 p1, v2 p2)                                                                                                            { oc_quadratic_to(p1.x, p1.y, p2.x, p2.y); }
 INLINE void OC_CubicTo(r32 x1, r32 y1, r32 x2, r32 y2, r32 x3, r32 y3)                                                                              { oc_cubic_to(x1, y1, x2, y2, x3, y3); }
+INLINE void OC_CubicTo(v2 p1, v2 p2, v2 p3)                                                                                                         { oc_cubic_to(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y); }
 INLINE void OC_ClosePath()                                                                                                                          { oc_close_path(); }
 INLINE rec OC_GlyphOutlines(oc_str32 glyphIndices)                                                                                                  { return ToRec(oc_glyph_outlines(glyphIndices)); }
 INLINE void OC_CodepointsOutlines(oc_str32 string)                                                                                                  { oc_codepoints_outlines(string); }
