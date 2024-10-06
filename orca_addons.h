@@ -300,6 +300,19 @@ INLINE rec operator / (rec rectangle, r32 scale)          { return RecScale(rect
 INLINE void operator += (rec& leftSide, const v2& vector) { leftSide.topLeft += vector; }
 INLINE void operator -= (rec& leftSide, const v2& vector) { leftSide.topLeft -= vector; }
 
+// +--------------------------------------------------------------+
+// |                       String Functions                       |
+// +--------------------------------------------------------------+
+bool BufferIsNullTerminated(u32 bufferSize, const char* bufferPntr)
+{
+	if (bufferSize > 0) { OC_Assert(bufferPntr != nullptr, "Passed nullptr bufferPntr to BufferIsNullTerminated"); }
+	for (u32 cIndex = 0; cIndex < bufferSize; cIndex++)
+	{
+		if (bufferPntr[cIndex] == '\0') { return true; }
+	}
+	return false;
+}
+
 #endif //  _ORCA_ADDONS_H
 
 // +--------------------------------------------------------------+
@@ -377,4 +390,5 @@ INLINE v2i Vec2iScale(v2i vector, i32 scalar)
 INLINE v2i Vec2iShrink(v2i vector, i32 divisor)
 INLINE rec RecShift(rec rectangle, v2 amount)
 INLINE rec RecScale(rec rectangle, r32 scalar)
+bool BufferIsNullTerminated(u32 bufferSize, const char* bufferPntr)
 */
