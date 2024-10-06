@@ -199,6 +199,18 @@ union Rectangle_t
 			struct { r32 width, height; };
 		};
 	};
+	
+	//TODO: We could maybe declare a "friend" struct and move this operator out of the
+	//NOTE: This is a type coercion operator (we can add "explicit" keyword here to force explicit type casting)
+	operator oc_rect () const { return { this->x, this->y, this->width, this->height }; }
+	//TODO: Can we not have a constructor on a union?
+	// Rectangle_t(oc_rect ocRect)
+	// {
+	// 	this->x = ocRect.x;
+	// 	this->y = ocRect.y;
+	// 	this->width = ocRect.w;
+	// 	this->height = ocRect.h;
+	// }
 };
 typedef Rectangle_t rec;
 
@@ -497,7 +509,7 @@ INLINE void OC_CircleStroke(r32 x, r32 y, r32 r)                                
 INLINE void OC_Arc(r32 x, r32 y, r32 r, r32 arcAngle, r32 startAngle)                                                                               { oc_arc(x, y, r, arcAngle, startAngle); }
 INLINE void OC_TextFill(r32 x, r32 y, MyStr_t text)                                                                                                 { oc_text_fill(x, y, text.oc); }
 INLINE void OC_ImageDraw(OC_Image_t image, rec rect)                                                                                                { oc_image_draw(image, rect.oc); }
-INLINE void OC_ImageDrawRegion(OC_Image_t image, rec srcRegion, rec dstRegion)                                                                      { oc_image_draw_region(image, srcRegion.oc, dstRegion.oc); }
+INLINE void OC_ImageDrawRegion(OC_Image_t image, rec srcRegion, rec dstRegion)                                                                      { oc_image_draw_region(image, srcRegion, dstRegion); }
 
 // +==============================+
 // |        Orca File API         |
