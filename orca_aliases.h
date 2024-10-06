@@ -220,7 +220,7 @@ INLINE MyStr_t NewStr(const char* nullTermStr)
 	result.pntr = (char*)nullTermStr;
 	return result;
 }
-INLINE MyStr_t NewStr(u64 length, const char* pntr)
+INLINE MyStr_t NewStr(u32 length, const char* pntr)
 {
 	MyStr_t result;
 	result.length = length;
@@ -651,6 +651,7 @@ mat23
 Rectangle_t
 rec
 @Functions
+INLINE MyStr_t NewStr(u32 length, const char* pntr)
 INLINE v2 NewVec2(r32 x, r32 y)
 INLINE v3 NewVec3(r32 x, r32 y, r32 z)
 INLINE v4 NewVec4(r32 x, r32 y, r32 z, r32 w)
